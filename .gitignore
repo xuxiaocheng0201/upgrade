@@ -9,3 +9,5 @@
 !/src
 !/windows-upgrader
 /windows-upgrader/target
+!/tester
+/tester/target

@@ -2,7 +2,8 @@ use std::ffi::CString;
 use std::fs::OpenOptions;
 use std::io::{Error, ErrorKind, Write};
 use std::mem::size_of;
-use anyhow::{Context, Result};
+use std::process::Command;
+use anyhow::{anyhow, Context, Result};
 use encoding_rs::GB18030;
 use windows::core::{PCSTR, PSTR};
 use windows::Win32::System::Threading::{CREATE_NEW_CONSOLE, CreateProcessA, PROCESS_INFORMATION, STARTUPINFOA};
@@ -16,8 +17,21 @@ fn convert_to_ansi(input: &str) -> Result<CString> {
     }
 }
 
-pub fn create_process(commandline: &str, runtime_directory: &str) -> Result<()> {
-    let commandline = convert_to_ansi(commandline)?;
+pub fn create_process(command: &Command, runtime_directory: &str) -> Result<()> {
+    let program = command.get_program();
+    let program = program.to_str();
+    if program.is_none() {
+        return Err(anyhow!("Invalid program: {:?}", program))
+    }
+    let program = program.unwrap();
+    let args = command.get_args().map(|s| s.to_str()).collect::<Vec<Option<&str>>>();
+    for arg in &args {
+        if arg.is_none() {
+            return Err(anyhow!("Invalid args: {:?}", command.get_args()))
+        }
+    }
+    let args = args.iter().map(|s| s.unwrap()).collect::<Vec<&str>>().join(" ");
+    let commandline = convert_to_ansi(&format!("{} {}", program, args))?;
     let runtime_directory = convert_to_ansi(runtime_directory)?;
     let mut _process_info = PROCESS_INFORMATION::default();
     let mut _startup_info = STARTUPINFOA::default();
@@ -44,7 +58,7 @@ pub(crate) fn call_upgrader(source: &str, target: &str, runtime: &str, delete: b
     upgrader.write_all(include_bytes!("../windows-upgrader/target/release/windows-upgrader.exe"))?;
     upgrader.flush()?;
     drop(upgrader);
-    let commandline = format!("./upgrader.exe \"{}\" \"{}\" \"{}\" {} {}", source, target, runtime, if delete { 1 } else { 0 }, args.join(" "));
-    create_process(&commandline, "./")?;
+    create_process(&Command::new("./upgrader.exe").arg(source).arg(target).arg(runtime)
+        .arg(if delete { "1" } else { "0" }).args(args), "./")?;
     Ok(())
 }

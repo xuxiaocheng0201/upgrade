@@ -1,5 +1,7 @@
 use std::env::args;
 use std::fs::{copy, remove_file, rename};
+use std::thread::sleep;
+use std::time::Duration;
 
 include!("../../src/windows.rs");
 
@@ -10,6 +12,7 @@ fn main() {
     let target = args.next().unwrap();
     let runtime = args.next().unwrap();
     let delete = args.next().unwrap() == "1";
+    sleep(Duration::from_secs(3));
     while let Err(e) = remove_file(&source) {
         match e.kind() {
             ErrorKind::NotFound => break,
@@ -22,10 +25,5 @@ fn main() {
     } else {
         copy(&target, &source).unwrap();
     }
-    let mut command = source.clone();
-    while let Some(arg) = args.next() {
-        command.push_str(" ");
-        command.push_str(&arg);
-    }
-    create_process(&command, &runtime).unwrap();
+    create_process(&Command::new(source).args(args), &runtime).unwrap();
 }
