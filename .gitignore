@@ -12,6 +12,18 @@
 !/README_zh.md
 
 !/windows-upgrader
-/windows-upgrader/target
+/windows-upgrader/*
+!/windows-upgrader/src
+!/windows-upgrader/Cargo.lock
+!/windows-upgrader/Cargo.toml
+!/windows-upgrader/target
+/windows-upgrader/target/*
+!/windows-upgrader/target/release
+/windows-upgrader/target/release/*
+!/windows-upgrader/target/release/windows-upgrader.exe
+
 !/tester
-/tester/target
+/tester/*
+!/tester/src
+!/tester/Cargo.lock
+!/tester/Cargo.toml
