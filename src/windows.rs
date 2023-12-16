@@ -1,5 +1,6 @@
 use std::ffi::CString;
-use std::io::{Error, ErrorKind};
+use std::fs::OpenOptions;
+use std::io::{Error, ErrorKind, Write};
 use std::mem::size_of;
 use anyhow::{Context, Result};
 use encoding_rs::GB18030;
@@ -34,6 +35,16 @@ pub fn create_process(commandline: &str, runtime_directory: &str) -> Result<()> 
             &mut _startup_info,
             &mut _process_info,
         )
-    }.with_context(|| "Failed to create process.")?;
+    }.with_context(|| format!("Failed to create process: {:?}", commandline))?;
+    Ok(())
+}
+
+pub(crate) fn call_upgrader(source: &str, target: &str, runtime: &str, delete: bool, args: &Vec<&str>) -> Result<()> {
+    let mut upgrader = OpenOptions::new().write(true).create(true).truncate(true).open("upgrader.exe")?;
+    upgrader.write_all(include_bytes!("../windows-upgrader/target/release/windows-upgrader.exe"))?;
+    upgrader.flush()?;
+    drop(upgrader);
+    let commandline = format!("./upgrader.exe \"{}\" \"{}\" \"{}\" {} {}", source, target, runtime, if delete { 1 } else { 0 }, args.join(" "));
+    create_process(&commandline, "./")?;
     Ok(())
 }
