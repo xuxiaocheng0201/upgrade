@@ -1,9 +1,12 @@
 [package]
 name = "upgrade"
 version = "0.1.0"
+authors = ["xuxiaocheng <2762267080@qq.com>"]
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "A helpful library for upgradeing the self program. Welcome to submit PR."
+readme = "README.md"
+license-file = "LICENSE"
+repository = "https://github.com/xuxiaocheng0201/upgrade/"
 
 [dependencies]
 anyhow = "^1.0"

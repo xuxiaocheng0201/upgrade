@@ -7,6 +7,10 @@
 
 ### Project ###
 !/src
+!/LICENSE
+!/README.md
+!/README_zh.md
+
 !/windows-upgrader
 /windows-upgrader/target
 !/tester
