@@ -1,7 +1,6 @@
 use std::ffi::CString;
 use std::io::{Error, ErrorKind};
 use std::mem::size_of;
-use std::path::Path;
 use anyhow::{Context, Result};
 use encoding_rs::GB18030;
 use windows::core::{PCSTR, PSTR};
@@ -16,7 +15,7 @@ fn convert_to_ansi(input: &str) -> Result<CString> {
     }
 }
 
-pub(crate) fn create_process(commandline: &str, runtime_directory: &str) -> Result<()> {
+pub fn create_process(commandline: &str, runtime_directory: &str) -> Result<()> {
     let commandline = convert_to_ansi(commandline)?;
     let runtime_directory = convert_to_ansi(runtime_directory)?;
     let mut _process_info = PROCESS_INFORMATION::default();

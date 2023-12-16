@@ -4,4 +4,8 @@
 !/.gitignore
 !/Cargo.lock
 !/Cargo.toml
+
+### Project ###
 !/src
+!/windows-upgrader
+/windows-upgrader/target
