@@ -5,33 +5,40 @@ use anyhow::{anyhow, Result};
 pub mod windows;
 use crate::windows::*;
 
-pub fn upgrade<P: AsRef<Path>>(path: P) -> Result<()> {
+pub mod builder;
+
+fn get_target<P: AsRef<Path>>(path: P) -> Result<String> {
     let target = path.as_ref().to_str();
     if target.is_none() {
         return Err(anyhow!("Invalid target path: {:?}", path.as_ref()));
     }
-    let target = target.unwrap();
+    Ok(target.unwrap().to_string())
+}
+
+fn get_current_exe() -> Result<String> {
     let current_exe = current_exe()?;
     let source = current_exe.to_str();
     if source.is_none() {
         return Err(anyhow!("Invalid current exe: {:?}", current_exe));
     }
-    let source = source.unwrap();
+    Ok(source.unwrap().to_string())
+}
+
+fn get_current_dir() -> Result<String> {
     let current_dir = current_dir()?;
     let runtime = current_dir.to_str();
     if runtime.is_none() {
         return Err(anyhow!("Invalid current dir: {:?}", current_dir));
     }
-    let runtime = runtime.unwrap();
-    call_upgrader(source, target, runtime, true, &Vec::new())
+    Ok(runtime.unwrap().to_string())
 }
 
-#[cfg(test)]
-mod test {
-    use super::upgrade;
-
-    #[test]
-    fn test() {
-        upgrade("./upgrade.exe").unwrap();
-    }
+/// Replace the current exe with the param path.
+///
+/// You should exit the program as soon as possible after it returns Ok.
+pub fn upgrade<P: AsRef<Path>>(path: P) -> Result<()> {
+    let target = get_target(path)?;
+    let source = get_current_exe()?;
+    let runtime = get_current_dir()?;
+    call_upgrader(&source, &target, &runtime, true, &Vec::new())
 }

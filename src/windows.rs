@@ -53,7 +53,7 @@ pub fn create_process(command: &Command, runtime_directory: &str) -> Result<()> 
     Ok(())
 }
 
-pub fn call_upgrader(source: &str, target: &str, runtime: &str, delete: bool, args: &Vec<&str>) -> Result<()> {
+pub(crate) fn call_upgrader(source: &str, target: &str, runtime: &str, delete: bool, args: &Vec<&str>) -> Result<()> {
     let mut upgrader = OpenOptions::new().write(true).create(true).truncate(true).open("upgrader.exe")?;
     // Please see: https://github.com/xuxiaocheng0201/upgrade/tree/master/windows-upgrader
     // After you build 'windows-upgrader' (cargo build --release), please replace it (copy /y .\windows-upgrader\target\release\windows-upgrader.exe .\windows-upgrader.exe).
