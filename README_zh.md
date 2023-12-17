@@ -21,7 +21,7 @@
 
 ```toml
 [dependencies]
-upgrade = "*"
+upgrade = "~0.2"
 ```
 
 
