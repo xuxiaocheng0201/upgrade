@@ -3,7 +3,7 @@ use std::path::Path;
 use anyhow::{anyhow, Result};
 
 pub mod windows;
-use crate::windows::*;
+pub(crate) use crate::windows::*;
 
 pub mod builder;
 
@@ -40,5 +40,5 @@ pub fn upgrade<P: AsRef<Path>>(path: P) -> Result<()> {
     let target = get_target(path)?;
     let source = get_current_exe()?;
     let runtime = get_current_dir()?;
-    call_upgrader(&source, &target, &runtime, true, &Vec::new())
+    call_upgrader(&get_default_temp_file(), &source, &target, &runtime, true, &Vec::new())
 }
