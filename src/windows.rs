@@ -17,6 +17,7 @@ fn convert_to_ansi(input: &str) -> Result<CString> {
     }
 }
 
+/// hide
 pub fn create_process(command: &Command, runtime_directory: &str) -> Result<()> {
     let program = command.get_program();
     let program = program.to_str();

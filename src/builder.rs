@@ -3,6 +3,16 @@ use anyhow::Result;
 use crate::{get_current_dir, get_current_exe};
 use crate::windows::call_upgrader;
 
+/// A builder to config how to upgrade.
+/// ```no-run
+/// use upgrader::builder::Builder;
+///
+/// fn main() {
+///     Builder::create().unwrap()
+///         .source(&"./upgrade.exe")
+///         .upgrade().unwrap();
+/// }
+/// ```
 pub struct Builder<'a> {
     source: Option<&'a str>,
     target: String,
@@ -13,7 +23,7 @@ pub struct Builder<'a> {
 }
 
 impl<'a> Builder<'a> {
-    pub fn new() -> Result<Builder<'a>> {
+    pub fn create() -> Result<Builder<'a>> {
         Ok(Builder {
             source: None,
             target: get_current_exe()?,
