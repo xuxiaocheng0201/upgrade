@@ -11,16 +11,3 @@
 !/LICENSE
 !/README.md
 !/README_zh.md
-!/windows-upgrader.exe
-
-!/windows-upgrader
-/windows-upgrader/*
-!/windows-upgrader/src
-!/windows-upgrader/Cargo.lock
-!/windows-upgrader/Cargo.toml
-
-!/tester
-/tester/*
-!/tester/src
-!/tester/Cargo.lock
-!/tester/Cargo.toml

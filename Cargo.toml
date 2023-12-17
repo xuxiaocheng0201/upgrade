@@ -5,8 +5,9 @@ authors = ["xuxiaocheng <2762267080@qq.com>"]
 edition = "2021"
 description = "A helpful library for upgradeing the self program. Welcome to submit PR."
 readme = "README.md"
-license-file = "LICENSE"
+license = "GPL-3"
 repository = "https://github.com/xuxiaocheng0201/upgrade/"
+keywords = ["upgrade", "self", "program"]
 
 [dependencies]
 anyhow = "^1.0"
