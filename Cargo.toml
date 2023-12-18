@@ -1,9 +1,9 @@
 [package]
 name = "upgrade"
-version = "0.3.0"
+version = "0.3.1"
 authors = ["xuxiaocheng <2762267080@qq.com>"]
 edition = "2021"
-description = "A helpful library for upgradeing the self program."
+description = "A helpful library for upgradeing your standalone executables. Welcome to submit PR!"
 readme = "README.md"
 license = "GPL-3.0"
 repository = "https://github.com/xuxiaocheng0201/upgrade/"
@@ -11,11 +11,9 @@ keywords = ["upgrade", "self", "program"]
 
 [dependencies]
 anyhow = "^1.0"
-encoding_rs = "~0.8"
-windows = { version = "~0.52", features = ["Win32_Foundation", "Win32_Security", "Win32_System_Threading", "Win32_System_Diagnostics_Debug", "Win32_System_Kernel", "Win32_System_Memory"] }
+self-replace = "~1.3"
+windows-sys = { version = "~0", features = ["Win32_Foundation", "Win32_Security", "Win32_System_Threading", "Win32_System_Diagnostics_Debug", "Win32_System_Kernel", "Win32_System_Memory"] }
 
-[build-dependencies]
-anyhow = "^1.0"
-
+# https://doc.rust-lang.org/cargo/reference/manifest.html#the-badges-section
 [badges]
-maintenance = { status = "deprecated", description = "Please see other crate: self_update." }
+maintenance = { status = "experimental" }

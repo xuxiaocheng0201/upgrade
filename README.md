@@ -1,9 +1,5 @@
 # Upgrade
 
-***THIS CRATE IS DEPRECATED. PLEASE SEE [self_update](https://crates.io/crates/self_update).***
-
-***If you want to publish a crate with the same name and different features, please contact me.***
-
 [![Crate](https://img.shields.io/crates/v/upgrade.svg)](https://crates.io/crates/upgrade)
 [![GitHub last commit](https://img.shields.io/github/last-commit/xuxiaocheng0201/upgrade)](https://github.com/xuxiaocheng0201/upgrade/commits/master)
 [![GitHub issues](https://img.shields.io/github/issues-raw/xuxiaocheng0201/upgrade)](https://github.com/xuxiaocheng0201/upgrade/issues)
@@ -17,6 +13,7 @@
 # Description
 
 A Rust crate to upgrade your program easily.
+(Based on [self-replace](https://crates.io/crates/self-replace).)
 
 
 # Usage
