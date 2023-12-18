@@ -2,6 +2,8 @@
 
 ***本项目已弃用，因已有更好的 [self_update](https://crates.io/crates/self_update)。***
 
+***如果你想发布同名的有其他功能的 crate，请联系我。***
+
 [![Crate](https://img.shields.io/crates/v/upgrade.svg)](https://crates.io/crates/upgrade)
 [![GitHub last commit](https://img.shields.io/github/last-commit/xuxiaocheng0201/upgrade)](https://github.com/xuxiaocheng0201/upgrade/commits/master)
 [![GitHub issues](https://img.shields.io/github/issues-raw/xuxiaocheng0201/upgrade)](https://github.com/xuxiaocheng0201/upgrade/issues)
