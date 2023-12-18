@@ -1,9 +1,9 @@
 [package]
 name = "upgrade"
-version = "0.2.2"
+version = "0.3.0"
 authors = ["xuxiaocheng <2762267080@qq.com>"]
 edition = "2021"
-description = "A helpful library for upgradeing the self program. Welcome to submit PR."
+description = "A helpful library for upgradeing the self program."
 readme = "README.md"
 license = "GPL-3.0"
 repository = "https://github.com/xuxiaocheng0201/upgrade/"
@@ -16,3 +16,6 @@ windows = { version = "~0.52", features = ["Win32_Foundation", "Win32_Security",
 
 [build-dependencies]
 anyhow = "^1.0"
+
+[badges]
+maintenance = { status = "deprecated", description = "Please see other crate: self_update." }
