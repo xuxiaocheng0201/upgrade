@@ -57,13 +57,3 @@ pub fn new_process(executable: &str, arguments: &Vec<&str>) -> Result<()> {
         }
     }
 }
-
-#[cfg(test)]
-mod test {
-    use crate::new_process;
-
-    #[test]
-    fn test() {
-        new_process("E:\\remote_invoke.exe", &Vec::new()).unwrap();
-    }
-}

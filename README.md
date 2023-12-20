@@ -22,7 +22,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-upgrade = "~0.2"
+upgrade = "~0.3"
 ```
 
 

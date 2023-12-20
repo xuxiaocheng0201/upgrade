@@ -9,6 +9,9 @@ pub use crate::windows::new_process;
 
 pub mod builder;
 
+pub extern crate anyhow;
+pub extern crate self_replace;
+
 fn run_upgrade(source: &str, delete: bool, args: &Vec<&str>) -> Result<()> {
     self_replace(source)?;
     let current_exe = current_exe()?;

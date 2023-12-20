@@ -120,12 +120,12 @@ dependencies = [
 
 [[package]]
 name = "upgrade"
-version = "0.3.1"
+version = "0.3.2"
 dependencies = [
  "anyhow",
  "self-replace",
  "widestring",
- "windows-sys 0.52.0",
+ "windows-sys 0.48.0",
 ]
 
 [[package]]
