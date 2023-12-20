@@ -5,7 +5,7 @@ authors = ["xuxiaocheng <2762267080@qq.com>"]
 edition = "2021"
 description = "A helpful library for upgradeing your standalone executables. Welcome to submit PR!"
 readme = "README.md"
-license = "GPL-3.0"
+license = "MIT OR Apache-2.0"
 repository = "https://github.com/xuxiaocheng0201/upgrade/"
 keywords = ["upgrade", "self-upgrade", "program"]
 
