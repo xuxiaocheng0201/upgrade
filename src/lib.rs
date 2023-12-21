@@ -1,35 +1,29 @@
 use std::env::current_exe;
 use std::fs::remove_file;
 use std::path::Path;
+use std::process::Command;
 use anyhow::{anyhow, Result};
 use self_replace::self_replace;
-
-pub mod windows;
-pub use crate::windows::new_process;
 
 pub mod builder;
 
 pub extern crate anyhow;
 pub extern crate self_replace;
 
-fn run_upgrade(source: &str, delete: bool, args: &Vec<&str>) -> Result<()> {
+pub fn run_upgrade<P: AsRef<Path>>(source: P, delete: bool, args: &Vec<&str>) -> Result<()> {
+    let source = source.as_ref();
     self_replace(source)?;
     let current_exe = current_exe()?;
-    new_process(current_exe.to_str()
-                    .ok_or(anyhow!("Invalid current exe: {:?}", current_exe))?,
-                args)?;
-    if delete {
-        remove_file(source)?;
-    }
+    let current_exe = current_exe.to_str()
+        .ok_or(anyhow!("Invalid current exe: {:?}", current_exe))?;
+    Command::new(current_exe).args(args).spawn()?;
+    if delete { remove_file(source)?; }
     Ok(())
 }
 
 /// Replace the current exe with the param path.
 ///
-/// You should exit the program as soon as possible after it returns Ok.
+/// You may exit the program as soon as possible after it returns Ok.
 pub fn upgrade<P: AsRef<Path>>(path: P) -> Result<()> {
-    run_upgrade(path.as_ref().to_str()
-                    .ok_or(anyhow!("Invalid path: {:?}", path.as_ref()))?,
-                true,
-                &Vec::new())
+    run_upgrade(path, true, &Vec::new())
 }

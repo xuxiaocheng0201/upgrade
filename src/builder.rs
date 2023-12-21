@@ -1,3 +1,4 @@
+use std::path::{Path, PathBuf};
 use std::process::exit;
 use anyhow::Result;
 use crate::run_upgrade;
@@ -13,7 +14,7 @@ use crate::run_upgrade;
 /// }
 /// ```
 pub struct Builder<'a> {
-    source: Option<&'a str>,
+    source: Option<PathBuf>,
     args: Vec<&'a str>,
     delete: bool,
     exit: Option<i32>,
@@ -30,8 +31,8 @@ impl<'a> Builder<'a> {
     }
 
     /// Set the new version file.
-    pub fn source(&mut self, source: &'a str) -> &mut Builder<'a> {
-        self.source = Some(source);
+    pub fn source<P: AsRef<Path>>(&mut self, source: P) -> &mut Builder<'a> {
+        self.source = Some(source.as_ref().to_path_buf());
         self
     }
 
@@ -58,7 +59,7 @@ impl<'a> Builder<'a> {
         if self.source.is_none() {
             panic!("No upgrade source specified.");
         }
-        run_upgrade(self.source.unwrap(), self.delete, &self.args)?;
+        run_upgrade(self.source.as_ref().unwrap(), self.delete, &self.args)?;
         if let Some(code) = self.exit {
             exit(code);
         }
