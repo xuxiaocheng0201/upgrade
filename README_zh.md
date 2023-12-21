@@ -8,8 +8,6 @@
 
 **其他语言版本：[English](README.md)，[简体中文](README_zh.md)。**
 
-**欢迎提交 [PR](https://github.com/xuxiaocheng0201/variable-len-reader/pulls)！**
-
 # 描述
 
 更方便地自动更新程序本身
@@ -22,7 +20,7 @@
 
 ```toml
 [dependencies]
-upgrade = "~0.3"
+upgrade = "~0.4"
 ```
 
 

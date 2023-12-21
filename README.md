@@ -8,8 +8,6 @@
 
 **Read this in other languages: [English](README.md), [简体中文](README_zh.md).**
 
-**Welcome to submit [PR](https://github.com/xuxiaocheng0201/variable-len-reader/pulls)!**
-
 # Description
 
 A Rust crate to upgrade your program easily.
@@ -22,7 +20,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-upgrade = "~0.3"
+upgrade = "~0.4"
 ```
 
 
