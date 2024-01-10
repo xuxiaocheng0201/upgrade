@@ -42,19 +42,21 @@ impl<'a> Builder<'a> {
         self
     }
 
-    /// Set whether to delete the new version file.
+    /// Set whether to delete the new version file after upgrading.
     pub fn delete(&mut self, delete: bool) -> &mut Builder<'a> {
         self.delete = delete;
         self
     }
 
-    /// Set the exit code after call upgrade.
+    /// Set the exit code after calling upgrade.
     pub fn exit(&mut self, exit: i32) -> &mut Builder<'a> {
         self.exit = Some(exit);
         self
     }
 
     /// Run the upgrade process.
+    /// # Panic
+    /// If you don't set the source file.
     pub fn upgrade(&self) -> Result<()> {
         if self.source.is_none() {
             panic!("No upgrade source specified.");
