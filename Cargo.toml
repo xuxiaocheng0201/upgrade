@@ -17,4 +17,4 @@ self-replace = "^1"
 reportme = "~0.2"
 
 [badges.maintenance]
-status = "as-is"
+status = "passively-maintained"

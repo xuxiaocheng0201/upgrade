@@ -4,7 +4,7 @@ use anyhow::Result;
 use crate::run_upgrade;
 
 /// A builder to config how to upgrade.
-/// ```no-run
+/// ```no_run
 /// use upgrader::builder::Builder;
 ///
 /// fn main() {
