@@ -10,6 +10,8 @@ pub mod builder;
 pub extern crate anyhow;
 pub extern crate self_replace;
 
+/// Please consider using `upgrade::builder::Builder`
+#[doc(hidden)]
 pub fn run_upgrade<P: AsRef<Path>>(source: P, delete: bool, args: &Vec<&str>) -> Result<()> {
     let source = source.as_ref();
     self_replace(source)?;

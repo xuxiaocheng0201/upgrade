@@ -5,7 +5,7 @@ use crate::run_upgrade;
 
 /// A builder to config how to upgrade.
 /// ```no_run
-/// use upgrader::builder::Builder;
+/// use upgrade::builder::Builder;
 ///
 /// fn main() {
 ///     Builder::create().unwrap()
@@ -54,7 +54,7 @@ impl<'a> Builder<'a> {
         self
     }
 
-    /// Run the upgrade process.
+    /// Begin the upgrade process.
     /// # Panic
     /// If you don't set the source file.
     pub fn upgrade(&self) -> Result<()> {
