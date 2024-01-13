@@ -1,6 +1,6 @@
 [package]
 name = "upgrade"
-version = "1.0.0"
+version = "1.1.0"
 authors = ["xuxiaocheng <2762267080@qq.com>"]
 edition = "2021"
 description = "A helpful library for upgradeing your standalone executables."
@@ -12,6 +12,9 @@ keywords = ["upgrade", "self-upgrade", "program"]
 [dependencies]
 anyhow = "^1"
 self-replace = "^1"
+
+[build-dependencies]
+reportme = "~0.2"
 
 [badges.maintenance]
 status = "as-is"
