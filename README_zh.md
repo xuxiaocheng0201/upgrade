@@ -20,30 +20,26 @@
 
 ```toml
 [dependencies]
-upgrade = "^1"
+upgrade = "^2"
 ```
 
 
 # 示例
-
-使用建造者模式：
-
-```rust
-use upgrade::builder::Builder;
-
-fn main() {
-     Builder::create().unwrap()
-         .source(&"./upgrade.exe")
-         .upgrade().unwrap();
-}
-```
-
-快速更新：
 
 ```rust
 use upgrade::upgrade;
 
 fn main() {
     upgrade("./upgrade.exe").unwrap();
+}
+```
+
+或者在启动时添加参数：
+
+```rust,no_run
+use upgrade::run_upgrade;
+
+fn main() {
+    run_upgrade("./upgrade.exe", true, ["--upgraded"]).unwrap();
 }
 ```

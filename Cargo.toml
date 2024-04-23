@@ -7,13 +7,15 @@ description = "A helpful library for upgradeing your standalone executables."
 readme = "README.md"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/xuxiaocheng0201/upgrade/"
+documentation = "https://docs.rs/upgrade/"
+categories = ["accessibility"]
 keywords = ["upgrade", "self-upgrade", "program"]
 
 [dependencies]
 self-replace = "^1"
 
 [build-dependencies]
-reportme = "~0.2"
+reportme = ">=0.2"
 
 [badges.maintenance]
 status = "passively-maintained"

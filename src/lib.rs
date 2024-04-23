@@ -1,3 +1,7 @@
+#![doc = include_str!("../README.md")]
+#![forbid(unsafe_code)]
+#![warn(missing_docs)]
+
 pub extern crate self_replace;
 
 use std::env::current_exe;

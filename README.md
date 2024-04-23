@@ -20,30 +20,26 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-upgrade = "^1"
+upgrade = "^2"
 ```
 
 
 # Example
 
-Using the Builder mode:
-
-```rust
-use upgrade::builder::Builder;
-
-fn main() {
-     Builder::create().unwrap()
-         .source(&"./upgrade.exe")
-         .upgrade().unwrap();
-}
-```
-
-A shortcut:
-
-```rust
+```rust,no_run
 use upgrade::upgrade;
 
 fn main() {
     upgrade("./upgrade.exe").unwrap();
+}
+```
+
+Or call with args:
+
+```rust,no_run
+use upgrade::run_upgrade;
+
+fn main() {
+    run_upgrade("./upgrade.exe", true, ["--upgraded"]).unwrap();
 }
 ```
