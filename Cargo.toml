@@ -10,7 +10,6 @@ repository = "https://github.com/xuxiaocheng0201/upgrade/"
 keywords = ["upgrade", "self-upgrade", "program"]
 
 [dependencies]
-anyhow = "^1"
 self-replace = "^1"
 
 [build-dependencies]
