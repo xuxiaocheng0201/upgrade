@@ -1,6 +1,6 @@
 [package]
 name = "upgrade"
-version = "2.0.0"
+version = "2.0.1"
 authors = ["xuxiaocheng <2762267080@qq.com>"]
 edition = "2021"
 description = "A helpful library for upgradeing your standalone executables."
@@ -8,7 +8,7 @@ readme = "README.md"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/xuxiaocheng0201/upgrade/"
 documentation = "https://docs.rs/upgrade/"
-categories = ["accessibility"]
+categories = ["command-line-interface"]
 keywords = ["upgrade", "self-upgrade", "program"]
 
 [dependencies]
