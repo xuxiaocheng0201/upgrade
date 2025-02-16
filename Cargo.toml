@@ -12,7 +12,7 @@ categories = ["accessibility"]
 keywords = ["upgrade", "self-upgrade", "program"]
 
 [dependencies]
-self-replace = "^1"
+self-replace = "^1.5"
 
 [build-dependencies]
 reportme = ">=0.2"
